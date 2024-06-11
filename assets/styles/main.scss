@@ -1,0 +1,36 @@
+*,
+*::after,
+*::before{
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+    color: black;
+    font-family: "PT Sans";
+    box-shadow: none;
+    background: none;
+    border: none;
+    box-sizing: border-box;
+}
+
+button{
+    cursor: pointer;
+}
+
+input{
+    height: 40px;
+    border-radius: 5px;
+    border: 1px solid #BCBCBC;
+    transition: all 0.3s ease-in-out;
+    font-size: 18px;
+    font-weight: bold;
+    padding: 0 9px;
+}
+
+input:focus{
+    outline: none;
+    border: 1px solid #0584FE;
+}
+
+label{
+    font-size: 12px;
+}
