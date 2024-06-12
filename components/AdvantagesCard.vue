@@ -61,7 +61,7 @@ const props = defineProps({
         }
     }
 
-    @media (max-width: 430px) {
+    @media (max-width: 830px) {
       .card_main{
         height: 120px;
         width: 100%;
@@ -73,6 +73,7 @@ const props = defineProps({
       }
 
       .card_content{
+        flex: 1;
         h3{
             font-size: 16px;
             font-weight: bold;
@@ -83,6 +84,8 @@ const props = defineProps({
         p{
             font-size: 13px;
             line-height: 120%;
+            // flex: 1;
+            width: 100%;
         }
       }
     }

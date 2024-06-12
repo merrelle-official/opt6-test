@@ -55,6 +55,8 @@ const props = defineProps({
 }
 
 .goto{
+    display: flex;
+        justify-content: center;
     width: 100%;
     padding: 11px 110px;
     font-size: 18px;
@@ -68,23 +70,26 @@ const props = defineProps({
 }
 
 
-@media (max-width: 430px){
+@media (max-width: 1000px){
     .card_main{
-        width: 100%;
+        width: 50%;
     }
 
     .card_content{
-    h2{
-        font-size: 26px;
+        h2{
+            font-size: 26px;
+        }
+
+        p{
+            font-size: 16px;
+        }
     }
 
-    p{
-        font-size: 16px;
-    }
 }
-    .goto{
-        display: flex;
-        justify-content: center;
+
+@media (max-width: 600px){
+    .card_main{
+        width: 100%;
     }
 }
 </style>

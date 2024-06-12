@@ -93,7 +93,28 @@
         }
     }
 
-    @media (max-width: 430px) {
+    @media (max-width: 1600px){
+        .header{
+            height: auto;
+
+            .header_container{
+            justify-content: space-between;
+            align-items: center;
+            width: 80%;
+            >:last-child{
+                justify-content: center;
+                margin: 10px 0;
+            }
+
+            >:last-child>p{
+                flex-basis: 100%;
+                text-align: center
+            }
+        }
+        }
+    }
+
+    @media (max-width: 1000px) {
         .header{
             height: auto;
         }

@@ -70,24 +70,20 @@
     const formSended = ref(false)
     const isPopupVisible = ref(false)
 
-    onMounted(() => {
-        
-    })
-
-    
-
     const handleResize = () => {
-        slider_length.value = window.innerWidth <= 430 ? documents.length : documents.length / 3
-        console.log(window.innerWidth)
+        if( window.innerWidth <= 600 ) slider_length.value = documents.length
+        else if( window.innerWidth <= 1000 ) slider_length.value = documents.length / 2
+        else slider_length.value = documents.length / 3
+        
     };
 
-    // Добавляем обработчик события 'resize' при монтировании компонента
     onMounted(() => {
-        slider_length.value = window.innerWidth <= 430 ? documents.length : documents.length / 3
+        if( window.innerWidth <= 600 ) slider_length.value = documents.length
+        else if( window.innerWidth <= 1000 ) slider_length.value = documents.length / 2
+        else slider_length.value = documents.length / 3
         window.addEventListener('resize', handleResize);
     });
 
-    // Удаляем обработчик события 'resize' при размонтировании компонента
     onUnmounted(() => {
         window.removeEventListener('resize', handleResize);
     });
@@ -394,7 +390,7 @@
         }
     }
     
-    @media (max-width: 1280px) {
+    @media (max-width: 1600px) {
         .main{
             width: 80%;
         }
@@ -404,7 +400,7 @@
             align-items: center;
             >img{
                 
-                width: 40%;
+                width: 50%;
                 height: auto;
             }
         }
@@ -444,42 +440,67 @@
             }
         }
 
+        #documents{
+            width: 100%;
+            
+            >h2{
+                font-size: 28px;
+                text-align: center;
+            }
+        }
+
+    }
+
+    @media (max-width: 1280px) {
+
+        #check_fine{
+            >img{
+                width: 40%;
+            }
+        }
+
         .advantages_cards{
             grid-template-columns: 1fr 1fr;
             grid-template-rows: 1fr 1fr 1fr;
             justify-items: center;
         }
 
-        #documents{
-            width: 100%;
-            >h2{
-                font-size: 28px;
-            }
-        }
-
     }
 
-    @media (max-width: 430px) {
-        .main{
-            width: 80%;
-        }
+    @media (max-width: 1000px) {
 
         #check_fine{
             flex-direction: column;
-            width: 100%;
-
+            align-items: center;
             >img{
-                height: auto;
-                width: 100%;
+                width: 50%;
             }
         }
 
         .check_form{
             flex-basis: auto;
             >h1{
+                text-align: center;
                 font-size: 30px;
             }
         }
+
+        #advantages{
+            width: 100%;
+            >h2{
+                font-size: 28px;
+            }
+        }
+
+        .advantages_cards{
+            grid-template-columns: 1fr 1fr;
+            grid-template-rows: 1fr 1fr 1fr;
+            justify-items: center;
+        }
+
+    }
+
+    @media (max-width: 830px) {
 
         .first_row{
             flex-direction: column;
@@ -492,42 +513,35 @@
             };
         }
 
-        .second_row{
-            margin-bottom: 20px;
+
+        .advantages_cards{
+            gap: 15px;
         }
 
+        #documents{
+            text-align: start;
+        }
+
+    }
+
+    @media (max-width: 768px) {
         .form_buttons{
             flex-direction: column;
-            gap: 15px;
             >*{
                 display: flex;
-                justify-content: center
-            }
-        }
-
-        #advantages{
-            width: 100%;
-            text-align: start;
-            >h2{
-                font-size: 28px;
+                justify-content: center;
             }
         }
 
         .advantages_cards{
             display: flex;
             flex-direction: column;
-            gap: 15px;
+            
         }
-
-        #documents{
-            width: 100%;
-            text-align: start;
-            >h2{
-                font-size: 28px;
-            }
-        }
-
     }
+
+
+
 
     
 </style>
