@@ -93,7 +93,7 @@
         }
     }
 
-    @media (max-width: 360px) {
+    @media (max-width: 430px) {
         .header{
             height: auto;
         }

@@ -63,12 +63,34 @@
     import {documents, advantages} from "../data/datafile"
     import { ref } from 'vue';
 
-    let slider_length = documents.length / 3;
+    const slider_length = ref(0)
     const currentSlide = ref(0)
     const checkData = ref({carNumber: "", area: "", registration: ""})
     const inputsIsEmpty = ref(false)
     const formSended = ref(false)
     const isPopupVisible = ref(false)
+
+    onMounted(() => {
+        
+    })
+
+    
+
+    const handleResize = () => {
+        slider_length.value = window.innerWidth <= 430 ? documents.length : documents.length / 3
+        console.log(window.innerWidth)
+    };
+
+    // Добавляем обработчик события 'resize' при монтировании компонента
+    onMounted(() => {
+        slider_length.value = window.innerWidth <= 430 ? documents.length : documents.length / 3
+        window.addEventListener('resize', handleResize);
+    });
+
+    // Удаляем обработчик события 'resize' при размонтировании компонента
+    onUnmounted(() => {
+        window.removeEventListener('resize', handleResize);
+    });
 
     function setFieldRed(){
         inputsIsEmpty.value = true
@@ -78,11 +100,15 @@
     }
 
     const nextClick = () =>{
+        if( currentSlide.value != slider_length.value - 1 )
         currentSlide.value++
     }
 
     const prevClick = () =>{
-        currentSlide.value--
+        if(currentSlide.value != 0){
+            currentSlide.value--
+        }
+
     }
 
     const handleInput = (e) => {
@@ -367,8 +393,73 @@
             width: 30px;
         }
     }
+    
+    @media (max-width: 1280px) {
+        .main{
+            width: 80%;
+        }
 
-    @media (max-width: 360px) {
+        #check_fine{
+            width: 100%;
+            align-items: center;
+            >img{
+                
+                width: 40%;
+                height: auto;
+            }
+        }
+
+        .check_form{
+            flex-basis: auto;
+            >h1{
+                font-size: 30px;
+            }
+        }
+
+        .first_row{
+            .number{
+                flex-basis: 70%;
+            };
+            .area{
+                flex: 1;
+            };
+        }
+
+        .second_row{
+            margin-bottom: 20px;
+        }
+
+        .form_buttons{
+            >*{
+                display: flex;
+                justify-content: center;
+                flex: 1;
+            }
+        }
+
+        #advantages{
+            width: 100%;
+            >h2{
+                font-size: 28px;
+            }
+        }
+
+        .advantages_cards{
+            grid-template-columns: 1fr 1fr;
+            grid-template-rows: 1fr 1fr 1fr;
+            justify-items: center;
+        }
+
+        #documents{
+            width: 100%;
+            >h2{
+                font-size: 28px;
+            }
+        }
+
+    }
+
+    @media (max-width: 430px) {
         .main{
             width: 80%;
         }
@@ -437,4 +528,6 @@
         }
 
     }
+
+    
 </style>

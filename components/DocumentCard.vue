@@ -68,7 +68,7 @@ const props = defineProps({
 }
 
 
-@media (max-width: 360px){
+@media (max-width: 430px){
     .card_main{
         width: 100%;
     }
